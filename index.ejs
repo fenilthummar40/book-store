@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+    </head>
+    <style>
+        /* General body styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+/* Title styling */
+.tital {
+    background-color: #4CAF50;
+    padding: 20px;
+    text-align: center;
+    color: white;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+/* Form styling */
+.box1 {
+    width: 50%;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.box1 input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.box1 button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.box1 button:hover {
+    background-color: #45a049;
+}
+
+/* Table styling */
+.box2 {
+    width: 90%;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    text-align: left;
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Action buttons */
+button a {
+    text-decoration: none;
+    color: white;
+}
+
+button.i2 {
+    background-color: #2196F3;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+}
+
+button.i3 {
+    background-color: #f44336;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+}
+
+button.i2:hover {
+    background-color: #1976D2;
+}
+
+button.i3:hover {
+    background-color: #d32f2f;
+}
+
+    </style>
+<body>
+    <div class="tital">
+        <h1>book store</h1>
+    </div>
+    <div class="box1">
+        <form action="/addData" method="post">
+            <input type="text" placeholder="Enter your book name" name="name">
+            <input type="text" placeholder="Enter your auther name" name="authername">
+            <input type="text" placeholder="Enter your price" name="price">
+            <input type="text" placeholder="Enter your publish data" name="publishdata">
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    
+    <div class="box2">
+        <table border="1" width="100%">
+            <tr>
+                <th class="t1">Name</th>
+                <th class="t2">Auther Name</th>
+                <th class="t3">Price</th>
+                <th class="t4">Publish Data</th>
+                <th class="t5" colspan="2">Action</th>
+            </tr>
+                <% data.map((e ,i)=>{%>
+                    <tr>
+                        <td><%= e.name%></td>
+                        <td><%= e.authername%></td>
+                        <td><%= e.price%></td>
+                        <td><%= e.publishdata%></td>
+                        <td class="i1">
+                            <button class="i2"><a href="/editData?id=<%=e.id%>">Edit</a></button>
+                        </td>
+                        <td class="i1">
+                            <button class="i3"><a href="/deleteData?id=<%=e.id%>">Delete</a></button>
+                        </td>
+                    </tr>
+                <% }) %>
+        </table>
+    </div>
+
+    
+</body>
+</html>
